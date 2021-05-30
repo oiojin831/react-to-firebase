@@ -23,25 +23,27 @@ export default function App() {
       .catch((error) => {
         console.log("Error getting documents: ", error);
       });
-  });
+  }, []);
 
   function handleSubmit(e) {
     //upload name to server
     e.preventDefault();
+    const newData = {
+      name: name,
+      category: category,
+      position: position,
+      price: price,
+    };
     firestore
       .collection("goods")
-      .add({
-        name: name,
-        category: category,
-        position: position,
-        price: price,
-      })
+      .add(newData)
       .then((docRef) => {
         console.log("Document written with ID: ", docRef.id);
         setName("");
         setCategory("");
         setPosition("");
         setPrice(0);
+        setData((prev) => [...prev, newData]);
       })
       .catch((error) => {
         console.error("Error adding document: ", error);
