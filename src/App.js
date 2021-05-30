@@ -3,6 +3,7 @@ import { firestore } from "./firebase";
 
 export default function App() {
   const [data, setData] = useState(goods);
+  const [name, setName] = useState("");
 
   useEffect(() => {
     firestore
@@ -21,7 +22,25 @@ export default function App() {
       });
   });
 
-  return <div>{data?.map(GoodComponent)}</div>;
+  function handleSubmit(e) {
+    //upload name to server
+    e.preventDefault();
+    console.log(name);
+  }
+
+  return (
+    <div>
+      <form onSubmit={handleSubmit}>
+        <input
+          type="text"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+        />
+        <button type="submit">submit</button>
+      </form>
+      {data?.map(GoodComponent)}
+    </div>
+  );
 }
 
 const goods = [
