@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { firestore } from "./firebase";
 
 export default function App() {
-  const [data, setData] = useState();
+  const [data, setData] = useState(goods);
   function handleClick() {
     firestore
       .collection("goods")
