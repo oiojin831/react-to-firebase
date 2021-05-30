@@ -2,6 +2,7 @@ import React, { useState } from "react";
 
 export default function App() {
   const [data, setData] = useState();
+  setData(goods);
 
   return <div>{data?.map(GoodComponent)}</div>;
 }
