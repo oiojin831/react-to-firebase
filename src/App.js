@@ -8,6 +8,13 @@ export default function App() {
   );
 }
 
+// prop에 goods array에 있는 하나의 element가 들어왔을때 => <div>덩크 - 신발 - 신발장 - 300000</div> => 이런 컴포넌트를 만들것이다
+function GoodComponent(props) {
+  return (
+    <div>{`${props.name} - ${props.category} - ${props.position} - ${props.price}`}</div>
+  );
+}
+
 const goods = [
   {
     name: "덩크",
