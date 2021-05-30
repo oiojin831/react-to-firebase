@@ -4,6 +4,9 @@ import { firestore } from "./firebase";
 export default function App() {
   const [data, setData] = useState(goods);
   const [name, setName] = useState("");
+  const [category, setCategory] = useState("");
+  const [position, setPosition] = useState("");
+  const [price, setPrice] = useState(0);
 
   useEffect(() => {
     firestore
@@ -26,6 +29,9 @@ export default function App() {
     //upload name to server
     e.preventDefault();
     console.log(name);
+    console.log(category);
+    console.log(position);
+    console.log(price);
   }
 
   return (
@@ -35,6 +41,21 @@ export default function App() {
           type="text"
           value={name}
           onChange={(e) => setName(e.target.value)}
+        />
+        <input
+          type="text"
+          value={category}
+          onChange={(e) => setCategory(e.target.value)}
+        />
+        <input
+          type="text"
+          value={position}
+          onChange={(e) => setPosition(e.target.value)}
+        />
+        <input
+          type="number"
+          value={price}
+          onChange={(e) => setPrice(e.target.value)}
         />
         <button type="submit">submit</button>
       </form>
