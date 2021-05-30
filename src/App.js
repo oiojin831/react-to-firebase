@@ -2,9 +2,16 @@ import React, { useState } from "react";
 
 export default function App() {
   const [data, setData] = useState();
-  setData(goods);
+  function handleClick() {
+    setData(goods);
+  }
 
-  return <div>{data?.map(GoodComponent)}</div>;
+  return (
+    <div>
+      <button onClick={handleClick}>load data</button>
+      {data?.map(GoodComponent)}
+    </div>
+  );
 }
 
 const goods = [
