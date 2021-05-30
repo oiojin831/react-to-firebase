@@ -28,10 +28,20 @@ export default function App() {
   function handleSubmit(e) {
     //upload name to server
     e.preventDefault();
-    console.log(name);
-    console.log(category);
-    console.log(position);
-    console.log(price);
+    firestore
+      .collection("goods")
+      .add({
+        name: name,
+        category: category,
+        position: position,
+        price: price,
+      })
+      .then((docRef) => {
+        console.log("Document written with ID: ", docRef.id);
+      })
+      .catch((error) => {
+        console.error("Error adding document: ", error);
+      });
   }
 
   return (
