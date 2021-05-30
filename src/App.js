@@ -1,4 +1,22 @@
 import React, { useState } from "react";
+import { firestore } from "./firebase";
+const firebaseData = firestore
+  .collection("goods")
+  .get()
+  .then((querySnapshot) => {
+    const myArr = [];
+    querySnapshot.forEach((doc) => {
+      // doc.data() is never undefined for query doc snapshots
+      myArr.push(doc.data());
+    });
+    console.log(myArr);
+    setData(myArr);
+  })
+  .catch((error) => {
+    console.log("Error getting documents: ", error);
+  });
+
+console.log(firebaseData);
 
 export default function App() {
   const [data, setData] = useState();
