@@ -9,17 +9,14 @@ const firebaseData = firestore
       // doc.data() is never undefined for query doc snapshots
       myArr.push(doc.data());
     });
-    console.log(myArr);
-    setData(myArr);
   })
   .catch((error) => {
     console.log("Error getting documents: ", error);
   });
 
-console.log(firebaseData);
-
 export default function App() {
   const [data, setData] = useState();
+  console.log(firebaseData);
   function handleClick() {
     setData(goods);
   }
