@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { firestore } from "./firebase";
 
 export default function App() {
   const [data, setData] = useState(goods);
-  function handleClick() {
+
+  useEffect(() => {
     firestore
       .collection("goods")
       .get()
@@ -18,14 +19,9 @@ export default function App() {
       .catch((error) => {
         console.log("Error getting documents: ", error);
       });
-  }
+  });
 
-  return (
-    <div>
-      <button onClick={handleClick}>load data</button>
-      {data?.map(GoodComponent)}
-    </div>
-  );
+  return <div>{data?.map(GoodComponent)}</div>;
 }
 
 const goods = [
