@@ -18,7 +18,8 @@ export default function App() {
   const [data, setData] = useState();
   console.log(firebaseData);
   function handleClick() {
-    setData(goods);
+    console.log(firebaseData);
+    setData(firebaseData);
   }
 
   return (
