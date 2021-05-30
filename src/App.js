@@ -38,6 +38,10 @@ export default function App() {
       })
       .then((docRef) => {
         console.log("Document written with ID: ", docRef.id);
+        setName("");
+        setCategory("");
+        setPosition("");
+        setPrice(0);
       })
       .catch((error) => {
         console.error("Error adding document: ", error);
